@@ -9,14 +9,14 @@ terraform {
 
 provider "google" {
   # Configuration options
-  project = "project-cdd11f37-1379-47fa-ae0"
-  region  = "us-central1"
-  zone    = "us-central1-c"
+  credentials = file(var.credentials)
+  project     = var.project
+  region      = var.region
 }
 
 resource "google_storage_bucket" "demo-bucket" {
-  name                        = "terraform-demo-20250309-bucket"
-  location                    = "US"
+  name                        = var.gcs_bucket_name
+  location                    = var.location
   force_destroy               = true
   uniform_bucket_level_access = true
 
@@ -32,5 +32,6 @@ resource "google_storage_bucket" "demo-bucket" {
 }
 
 resource "google_bigquery_dataset" "demo_dataset" {
-  dataset_id = "demo_dataset"
+  dataset_id = var.bq_datatset_name
+  location   = var.location
 }
