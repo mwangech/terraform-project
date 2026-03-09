@@ -40,7 +40,7 @@ terraform.rc
 # *.dot
 
 *.json
-
+.terraform.lock.hcl
 # Optional: ignore plan files saved before destroying Terraform configuration
 # Uncomment the line below if you want to ignore planout files.
 # planout
